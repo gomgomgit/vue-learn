@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FEED THE FISH</title>
+
+	<style type="text/css">
+		.x {
+			width: 250px;
+			height: 15px;
+			background: red;
+			position: absolute;
+			left: 50%; top: 160px;
+		}
+		.l {
+			transform: translateX(-50%) rotate(30deg);
+		}
+		.r {
+			transform: translateX(-50%) rotate(-30deg);
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<div @click="feed()" style="text-align: center; cursor: pointer;">
+			<h2>FEED THE FISH</h2>
+			<img width="200" src="burger.jpg">
+			<div v-show="!toggle" class="x r"></div>
+			<div v-show="!toggle" class="x l"></div>
+		</div>
+
+		<div style="text-align: center;">
+			<img width="280" :src="toggle ? 'kurus'+'.png' : 'gendut' + '.png'">
+		</div>
+	</div>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue ({
+			el: '#app',
+			data: {
+				toggle: true,
+			},
+			methods: {
+				feed() {
+					this.toggle = !this.toggle;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

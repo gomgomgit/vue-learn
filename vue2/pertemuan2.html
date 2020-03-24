@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		.blue{
+			padding: 15px;
+			background: blue;
+		}
+		.red{
+			padding: 15px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		{{text}} <br>
+
+		<input v-bind:value="text">
+
+		<button @dblclick="ganti()">Ubah Nama</button> //short sintak v-on: sama dengan @
+
+		<div :class="kberubah ? 'red' : 'blue'"> //v-bind: bisa diganti dengan :
+			
+		</div>
+
+		<button menangkap event v-on:click="gkelas()">ubah class</button>
+
+		<br>
+
+		<a v-for="a in 3" v-bind:href="'artikel ' + a">artikel {{a}}</a> //campuran v-for v-bind
+    
+		<ul>
+			<li v-for="n in 10">ayam {{n}}</li>
+		</ul>
+
+		conditional rendering (v-if)
+		<div>
+			<p v-if="kberubah">Kondisi terpenuhi</p>
+			<p v-else>Kondisi terkosongi</p>
+			<p v-show="kberubah">Kondisi terpenuhi</p>
+			<p v-hide="kberubah">Kondisi terkosongi</p>
+		</div>
+
+	</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el: '#app',
+		data: {
+			text: 'Doyok',
+			kberubah: false,
+		},
+		methods: {
+			ganti() {
+				this.text = 'rere';
+			},
+			gkelas() {
+				this.kberubah = !this.kberubah;
+
+			},
+		}
+	})
+</script>
+</body>
+</html>
