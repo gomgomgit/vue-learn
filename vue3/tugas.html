@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tugas BINTANG</title>
+</head>
+<body>
+
+	<div id="app">
+		<button @click="tambahBintang()">Tambah Bintang</button>
+
+		<p v-for="btg in bintang">{{btg.btg}}</p>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				bintang: [
+					{ btg: '* ' },
+				],
+			},
+			methods: {
+				tambahBintang() {
+
+					var plusBintang = '* ';
+					this.bintang.forEach(function() {
+						plusBintang += '* ';
+					});
+
+					// var newBintang = { btg: plusBintang};
+
+					// console.log(newBintang);
+
+					// this.bintang.push({btg: newBintang});
+
+					this.bintang.push({btg: plusBintang});
+
+				}
+			}
+		});
+	</script>
+</body>
+</html>

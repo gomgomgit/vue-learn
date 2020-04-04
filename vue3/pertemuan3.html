@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>V-Pertemuan 3</title>
+</head>
+<body>
+
+	<div id="app">
+
+<!-- 		<p v-for="(m, noIndex) in mobil" :key="m">{{noIndex + 1 }}. {{ m }}</p> -->
+
+		<!-- <span v-for="terserah in 10">{{ terserah }}</span> -->
+
+		<button @click="tambah">Tambah Artikel</button>
+
+		<div v-for="(article, key, indek) in articles" :key="article.id">
+			<h2>{{ indek }}. {{key + article.judul }}</h2>
+			<p>{{ indek }}. {{key + article.konten }}</p>
+			<i>{{ indek }}. {{key + article.penulis }}</i>
+			<hr>
+		</div>
+	</div>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				mobil: ['CRV', 'BMW', 'ELEP'],
+
+				articles: [
+					{id: '1', judul: 'Hello!', konten: 'blablabla', penulis: 'balagir'},
+					{id: '2', judul: 'Hey!', konten: 'bliblibli', penulis: 'balagur'},
+					{id: '3', judul: 'Heyho!', konten: 'blublublu', penulis: 'balagor'},
+				]
+			},
+			methods: {
+				tambah() {
+					var dataBaru =  {
+						id: 4,
+						judul: 'yahoo!',
+						konten: 'oho',
+						penulis: 'bajuri'
+					};
+
+					this.articles.push(dataBaru);
+				},
+			},
+		})
+
+	</script>
+</body>
+</html>
