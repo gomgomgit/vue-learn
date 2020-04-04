@@ -39,8 +39,9 @@
 
 				},
 				tambahBintang2() {
-					var row = this.bintang.length;
-					var newBintang = this.bintang[row - 1].btg + "* ";
+					// var row = this.bintang.length;
+					// var newBintang = this.bintang[row - 1].btg + "* ";
+					var newBintang = this.bintang[this.bintang.length - 1].btg + "* ";
 					this.bintang.push({btg: newBintang});
 				}
 
