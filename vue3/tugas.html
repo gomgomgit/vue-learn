@@ -6,7 +6,8 @@
 <body>
 
 	<div id="app">
-		<button @click="tambahBintang()">Tambah Bintang</button>
+		<button @click="tambahBintang1">Tambah Bintang1</button>
+		<button @click="tambahBintang2">Tambah Bintang2</button>
 
 		<p v-for="btg in bintang">{{btg.btg}}</p>
 	</div>
@@ -21,7 +22,7 @@
 				],
 			},
 			methods: {
-				tambahBintang() {
+				tambahBintang1() {
 
 					var plusBintang = '* ';
 					this.bintang.forEach(function() {
@@ -36,7 +37,13 @@
 
 					this.bintang.push({btg: plusBintang});
 
+				},
+				tambahBintang2() {
+					var row = this.bintang.length;
+					var newBintang = this.bintang[row - 1].btg + "* ";
+					this.bintang.push({btg: newBintang});
 				}
+
 			}
 		});
 	</script>
