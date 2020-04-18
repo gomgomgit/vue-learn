@@ -30,8 +30,8 @@
 				form: [
 					{
 						nama: null,
-						qty: null,
-						harga:null,
+						qty: 0,
+						harga:0,
 					}
 				]
 			},
@@ -45,7 +45,7 @@
 					return this.form.reduce((total, num) => {
 						return total + parseInt(num.qty) * parseInt(num.harga);
 					}, 0)
-					let sum = 0;
+					// let sum = 0;
 		   //    this.form.forEach(function(form) {
 		   //       sum += (parseFloat(form.qty) * parseFloat(form.harga));
 		   //    });
@@ -54,7 +54,7 @@
 			},
 			methods: {
 				addList() {
-					var list = {nama:null, qty: null, harga: null};
+					var list = {nama:null, qty: 0, harga: 0};
 					this.form.push(list);
 				},
 				deleteList(index){
