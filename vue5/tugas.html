@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tugas</title>
+</head>
+<body>
+	<div id="app">
+		<div v-for="(n, index) in form">
+			<input type="text" v-model="n.nama" placeholder="Nama Barang">
+			<input type="number" v-model="n.harga" placeholder="Harga">
+			<input type="number" v-model="n.qty" placeholder="Qty">
+			<input type="number" v-model="subTotal[index]">
+			<button @click="deleteList(index)">Delete</button>
+		</div>
+		<button @click="addList">+</button>
+
+		<div>
+			<p>{{total}}</p>
+		</div>
+	</div>
+
+	<!-- harus pake kurung apa gak -->
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				form: [
+					{
+						nama: null,
+						qty: null,
+						harga:null,
+					}
+				]
+			},
+			computed: {
+				subTotal(){
+					return this.form.map((n) => {
+						return n.qty * n.harga
+					});
+				},
+				total(){
+					return this.form.reduce((total, num) => {
+						return total + parseInt(num.qty) * parseInt(num.harga);
+					}, 0)
+					let sum = 0;
+		   //    this.form.forEach(function(form) {
+		   //       sum += (parseFloat(form.qty) * parseFloat(form.harga));
+		   //    });
+		   //   	return sum;
+				}
+			},
+			methods: {
+				addList() {
+					var list = {nama:null, qty: null, harga: null};
+					this.form.push(list);
+				},
+				deleteList(index){
+					this.form.splice(index, 1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

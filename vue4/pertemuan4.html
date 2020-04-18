@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>V-Pertemuan 4</title>
+</head>
+<body>
+	<div id="app">
+		<!-- {{reverseTest}} -->
+		<!-- {{afterDiskon}} -->
+		harga: <input type="number" v-model="harga">
+		<br>
+		qty: <input type="number" v-model="qty">
+		<br>
+		diskon: <input type="number" v-model="diskon">
+		<p>total: {{totalAll}}</p>
+		<p>total diskon: {{totalDiskon}}</p>
+		<p>after diskon: {{afterDiskon}}</p>
+
+		<div>
+			Panjang dalam satuan meter: <input type="number" v-model="meter">
+			<br>
+			Panjang dalam Kilometer: {{km}}
+			<br>
+			Panjang dalam Centimeter: {{cm}}
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				test: 'erwrwerrwerwe',
+				harga: null,
+				diskon: null,
+				qty: null,
+
+				meter: null,
+				km: null,
+				cm: null,
+			},
+
+			computed: {
+				reverseTest() {
+					return this.test.split('').reverse().join('')
+				},
+				totalAll(){
+					return this.harga * this.qty
+				},
+				totalDiskon(){
+					return this.totalAll * this.diskon / 100
+				},
+				afterDiskon(){
+					return this.totalAll - this.totalDiskon
+				}
+			},
+
+			watch: {
+				meter(nue, old) {
+					// parameter 1 data sebelum berubah pm 2 setelah berubah
+					this.km = nue / 1000
+					this.cm = nue * 100
+
+				}
+			},
+
+			created() {
+				alert('komponen telah dibuat')
+			},
+			// updated() {
+			// 	alert('komponen di render ulang')
+			// },
+			beforeDestroy() {
+				alert('terima kasih telah apalah')
+			}
+		})
+	</script>
+</body>
+</html>
