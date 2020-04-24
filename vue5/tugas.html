@@ -13,9 +13,11 @@
 			<button @click="deleteList(index)">Delete</button>
 		</div>
 		<button @click="addList">+</button>
+		<br>
+		<button @click="toggleVisible">Submit</button>
 
 		<div>
-			<p>{{total}}</p>
+			<p v-show="visible">Rp. {{total}}</p>
 		</div>
 	</div>
 
@@ -33,7 +35,8 @@
 						qty: 0,
 						harga:0,
 					}
-				]
+				],
+				visible: false,
 			},
 			computed: {
 				subTotal(){
@@ -50,7 +53,7 @@
 		   //       sum += (parseFloat(form.qty) * parseFloat(form.harga));
 		   //    });
 		   //   	return sum;
-				}
+				},
 			},
 			methods: {
 				addList() {
@@ -59,6 +62,9 @@
 				},
 				deleteList(index){
 					this.form.splice(index, 1)
+				},
+				toggleVisible() {
+					return this.visible = !this.visible;
 				}
 			}
 		})
