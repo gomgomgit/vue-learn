@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>05</title>
+</head>
+<body>
+	<div id="app">
+		<div v-for="f in form">
+			<input type="text" placeholder="Nama Barang" v-model="f.nama">
+			<input type="number" placeholder="Qty" v-model="f.qty">
+			<button @click="addItem()">+</button>
+		</div>
+		<button @click="handleSubmit()">Submit</button>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				form: [{nama: null, qty: null},],
+			},
+			methods: {
+				handleSubmit() {
+					console.log(this.form)
+				},
+				addItem() {
+					const item = {nama : null, qty: null};
+					this.form.push(item);
+				}
+
+			}
+		})
+	</script>
+</body>
+</html>
